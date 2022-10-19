@@ -75,6 +75,15 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "BL/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/BL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BL.dll": {}
+        }
       }
     }
   },
@@ -185,10 +194,16 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "BL/1.0.0": {
+      "type": "project",
+      "path": "../BL/BL.csproj",
+      "msbuildProject": "../BL/BL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BL >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -223,7 +238,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj": {
+              "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -31,7 +31,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj": {
+                "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -69,6 +73,21 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj",
+        "projectName": "BL",
+        "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }
