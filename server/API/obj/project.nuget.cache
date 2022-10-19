@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "GPmYYsctFqrodN04uSpvkBrVki3RR388VXZ0CX295nyduw/QSX7AmB5JaxuXlSLPnJ40RdXRwzhk4bilGU+U4g==",
+  "dgSpecHash": "JY9Kg7fXqu57CgWqpk1VZNTnvst23Li3ZlXqZqlprHCjvG3njstM6quWJsvj8nQyKMWxX+6YwhfWxdv+sNfFNQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\server\\API\\API.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\API\\API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
   "logs": []
 }
