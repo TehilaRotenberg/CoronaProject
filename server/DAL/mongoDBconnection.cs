@@ -11,9 +11,10 @@ namespace DAL
     public abstract class mongoDBconnection<T>
     {
         const string DATABASE_NAME = "CoronaProject";
-        public MongoClient connection =new MongoClient( @"mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false");
+        public MongoClient connection =new MongoClient(@"mongodb://localhost:27017/?readPreference=primary&directConnection=true&ssl=false");
         public MongoDatabaseBase database { get; set; }
         public IMongoCollection<BsonDocument> collection { get; set; }
+        
 
         List<BsonDocument> documents;
         List<T> list;
