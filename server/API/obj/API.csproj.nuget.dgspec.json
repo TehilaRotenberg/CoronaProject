@@ -34,6 +34,9 @@
             "projectReferences": {
               "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj": {
                 "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\BL\\BL.csproj"
+              },
+              "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj": {
+                "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj"
               }
             }
           }
@@ -103,6 +106,25 @@
         "projectUniqueName": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\DAL\\DAL.csproj",
         "projectName": "DAL",
         "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\DAL\\DAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj": {
+                "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}

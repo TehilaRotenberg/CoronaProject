@@ -16,8 +16,8 @@ namespace DAL
         public IMongoCollection<BsonDocument> collection { get; set; }
         
 
-        List<BsonDocument> documents;
-        List<T> list;
+        public List<BsonDocument> documents;
+        public List<T> list;
        
         public mongoDBconnection(string collection_name)
         {
@@ -33,7 +33,7 @@ namespace DAL
         }
         
         //Read
-       public abstract List<T> Get();
+       public abstract List<T> GetAll();
 
         //Update
         //Delete
