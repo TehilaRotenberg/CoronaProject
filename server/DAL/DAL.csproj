@@ -141,6 +141,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Corona_vaccine_DAL.cs" />
+    <Compile Include="IllnessDate_DAL.cs" />
     <Compile Include="mongoDBconnection.cs" />
     <Compile Include="PersonalInformations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

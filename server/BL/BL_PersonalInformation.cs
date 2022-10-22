@@ -11,8 +11,9 @@ namespace BL
     {
         public List<PersonalInformation> GetAll()
         {
-            PersonalInformations personalInformations = new PersonalInformations("personalInformations");
+            PersonalInformations personalInformations = new PersonalInformations("personalInformation");
             return personalInformations.GetAll();
+
         }
         
     }

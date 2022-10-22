@@ -9,11 +9,13 @@ namespace Models
 {
     public class IllnessDate
     {
-        private BsonDocument date;
+       
 
-        public IllnessDate(BsonDocument date)
+        public IllnessDate(BsonDocument illness)
         {
-            this.date = date;
+            this._id = new ObjectId((illness["_id"].ToString()));
+            this.positive_result_date = DateTime.Parse(illness["positive_result_date"].ToString());
+            this.recovery_date = DateTime.Parse(illness["recovery_date"].ToString());
         }
 
         public ObjectId _id { get; set; }

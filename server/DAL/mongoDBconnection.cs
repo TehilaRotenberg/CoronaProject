@@ -10,12 +10,12 @@ namespace DAL
 {
     public abstract class mongoDBconnection<T>
     {
-        const string DATABASE_NAME = "CoronaProject";
+        const string DATABASE_NAME = "coronaProject";
         public MongoClient connection =new MongoClient(@"mongodb://localhost:27017/?readPreference=primary&directConnection=true&ssl=false");
         public MongoDatabaseBase database { get; set; }
         public IMongoCollection<BsonDocument> collection { get; set; }
-        
 
+       
         public List<BsonDocument> documents;
         public List<T> list;
        
@@ -23,7 +23,8 @@ namespace DAL
         {
             this.database=(MongoDatabaseBase)connection.GetDatabase(DATABASE_NAME);
             this.collection = collection = database.GetCollection<BsonDocument>(collection_name);
-            List<BsonDocument> documents = collection.Find(new BsonDocument()).ToList();
+            documents = collection.Find(new BsonDocument()).ToList();
+            
         }
 
         //Create
@@ -40,6 +41,13 @@ namespace DAL
 
 
         public abstract BsonDocument CreatBsonDocument(T obj);
+
+        public virtual BsonDocument Find(ObjectId objectId)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", objectId);
+            BsonDocument bsonDocument = documents.Where(doc => doc["_id"] == objectId).FirstOrDefault();
+            return bsonDocument;
+        }
 
     }
 

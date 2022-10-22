@@ -10,12 +10,14 @@ namespace Models
 {
     public class Corona_vaccine
     {
-        ObjectId _id;
-        private BsonDocument vaccine;
+        public ObjectId _id { get; set; }
+        public DateTime injection_date { get; set; }
+        public Vaccine_company vaccine_Company { get; set; }
 
         public Corona_vaccine(BsonDocument vaccine)
         {
-            this.vaccine = vaccine;
+            _id= new ObjectId(vaccine["_id"].ToString());
+            injection_date= DateTime.Parse(vaccine["injection_date"].ToString());
         }
 
         public DateTime Date_of_vaccine { get; set; }

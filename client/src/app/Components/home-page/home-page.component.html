@@ -1,0 +1,24 @@
+<table>
+    <tr>
+        <th>שם פרטי</th>
+        <th>שם משפחה</th>
+        <th>ת.ז</th>
+        <th>כתובת</th>
+        <th>תאריך לידה</th>
+        <th>טלפון</th>
+        <th>טלפון נייד</th>
+        
+    </tr>
+    <tr *ngFor="let p of prsonalInformations">
+        <td>{{p.first_name}}</td>
+        <td>{{p.last_name}}</td>
+        <td>{{p.id}}</td>
+        <td>{{p.address}}</td>
+        <!--<td>{{p.city}}</td>-->
+        <td>{{p.birthday}}</td>
+        <td>{{p.phone}}</td>
+        <td>{{p.mobile}}</td>
+        <th>עדכון</th>
+        <th>מחיקה</th>
+    </tr>
+</table>
