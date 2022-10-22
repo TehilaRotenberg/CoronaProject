@@ -14,5 +14,6 @@ namespace BL
             PersonalInformations personalInformations = new PersonalInformations("personalInformations");
             return personalInformations.GetAll();
         }
+        
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using BL;
-
+using System.Collections.Generic;
 
 namespace API.Controllers
 {
@@ -11,7 +11,7 @@ namespace API.Controllers
     public class personalInformationController : ControllerBase
     {
         [Route("getall")]
-        [HttpPost]
+        [HttpGet]
         public List<PersonalInformation> GetAll()
         {
             BL_PersonalInformation personalInformationBL = new BL_PersonalInformation();

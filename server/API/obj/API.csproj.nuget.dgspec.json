@@ -92,6 +92,9 @@
             "projectReferences": {
               "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\DAL\\DAL.csproj": {
                 "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\DAL\\DAL.csproj"
+              },
+              "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj": {
+                "projectPath": "C:\\Users\\USER\\OneDrive\\מחשבים תשפב\\פרוייקט\\CoronaProject\\server\\Model\\Models.csproj"
               }
             }
           }

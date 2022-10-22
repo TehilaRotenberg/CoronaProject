@@ -24,7 +24,9 @@ namespace DAL
 
         public override List<PersonalInformation> GetAll()
         {
-            list = new List<PersonalInformation>(); 
+            list = new List<PersonalInformation>();
+            if (documents.Count < 0)
+                return null;
             foreach (BsonDocument document in documents)
             {
                 list.Add(new PersonalInformation(document));
