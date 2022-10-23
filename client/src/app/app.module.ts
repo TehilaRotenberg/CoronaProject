@@ -7,6 +7,7 @@ import { HomePageComponent } from './Components/home-page/home-page.component';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PersonalDitailsComponent } from './Components/personal-ditails/personal-ditails.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { PersonalDitailsComponent } from './Components/personal-ditails/personal
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
     
 
   ],

@@ -22,6 +22,13 @@ namespace DAL
         {
         }
 
+        public  PersonalInformation Update(PersonalInformation personalInformation)
+        {
+            var p= personalInformation.ToBson();
+            return null;
+        }
+        
+
         public override BsonDocument CreatBsonDocument(PersonalInformation obj)
         {
             throw new NotImplementedException();

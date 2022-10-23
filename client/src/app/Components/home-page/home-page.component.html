@@ -9,7 +9,9 @@
         <th>טלפון נייד</th>
         
     </tr>
-    <tr *ngFor="let p of prsonalInformations">
+    <!--(click)="DisplayingPersonalDetails(p)"-->
+    <tr *ngFor="let p of prsonalInformations"   >
+      
         <td>{{p.first_name}}</td>
         <td>{{p.last_name}}</td>
         <td>{{p.id}}</td>
@@ -18,7 +20,8 @@
         <td>{{p.birthday}}</td>
         <td>{{p.phone}}</td>
         <td>{{p.mobile}}</td>
-        <th>עדכון</th>
+    
+        <th (click)="update(p)">עדכון</th>
         <th>מחיקה</th>
     </tr>
 </table>

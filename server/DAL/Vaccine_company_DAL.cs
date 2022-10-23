@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Models;
+using MongoDB.Driver;
+using MongoDB.Bson;
+
+namespace DAL
+{
+    public class Vaccine_company_DAL : mongoDBconnection<Vaccine_company>
+    {
+        public Vaccine_company_DAL(string collection_name) : base(collection_name)
+        {
+        }
+
+        public override BsonDocument CreatBsonDocument(Vaccine_company obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override List<Vaccine_company> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+        public Vaccine_company FindCompany(ObjectId objectId)
+        {
+            BsonDocument bsondocument = base.Find(objectId);
+            if (bsondocument != null)
+                return new Vaccine_company(bsondocument);
+            return null;
+        }
+    }
+}

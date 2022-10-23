@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalInformationService } from 'src/app/Services/personal-information.service';
 
 @Component({
   selector: 'app-personal-ditails',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalDitailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public personalinformationService:PersonalInformationService) { 
+    console.log(personalinformationService.client.vaccines)
+  }
 
   ngOnInit(): void {
   }

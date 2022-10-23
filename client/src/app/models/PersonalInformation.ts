@@ -1,3 +1,5 @@
+import { KeyObject } from "crypto";
+import { Corona_vaccine } from "./Corona_vaccine";
 import { IllnessDate } from "./IllnessDate";
 import { Vaccine_company } from "./Vaccine_company";
 
@@ -11,7 +13,7 @@ export class PersonalInformation{
     birthday!: Date;
     phone!: number;
     mobile!: number;
-    vaccines!: Vaccine_company[];
-    illnessDates!: IllnessDate[];
+    vaccines: Corona_vaccine[]=[];
+    illnessDates: IllnessDate[]=[];
     
 }

@@ -9,12 +9,18 @@ namespace BL
 {
     public class BL_PersonalInformation
     {
+        PersonalInformations personalInformations;
+
         public List<PersonalInformation> GetAll()
         {
-            PersonalInformations personalInformations = new PersonalInformations("personalInformation");
+             personalInformations = new PersonalInformations("personalInformation");
             return personalInformations.GetAll();
 
         }
-        
+
+        public PersonalInformation Update(PersonalInformation personalInformation)
+        {
+            return personalInformations.Update(personalInformation);
+        }
     }
 }

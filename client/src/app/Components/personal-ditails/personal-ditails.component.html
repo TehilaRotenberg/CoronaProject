@@ -1,8 +1,40 @@
-<table><tr><td>שם פרטי</td></tr>
-<tr><td>שם משפחה</td></tr>
-<tr><td>תעודת זהות</td></tr>
-<tr><td>כתובת      </td></tr>
-<tr><td>תאריך לידה </td></tr>
-<tr><td>טלפון      </td> </tr>
-<tr><td>טלפון נייד </td></tr>
-
+<table >
+    <tr>
+        <td>שם פרטי</td>
+        <input [disabled]="true" [(ngModel)]="personalinformationService.client.first_name">
+    </tr>
+    <tr> <td>שם משפחה</td><input [disabled]="true" [(ngModel)]="personalinformationService.client.last_name"></tr>
+        
+<tr><td>תעודת זהות</td> <input [disabled]="true" [(ngModel)]="personalinformationService.client.id"></tr>
+       
+   <tr><td>כתובת</td> <input [disabled]="true" [(ngModel)]="personalinformationService.client.address"></tr>     
+       <tr> <td>תאריך לידה</td><input [disabled]="true" type="date" [(ngModel)]="personalinformationService.client.birthday"></tr>
+      <tr>  <td>טלפון</td><input [disabled]="true"  [(ngModel)]="personalinformationService.client.phone"></tr>
+     <tr>  <td>טלפון נייד</td> <input [disabled]="true" [(ngModel)]="personalinformationService.client.mobile"></tr>
+   
+    
+</table>
+<br>
+<table>
+    <tr><th>תאריך קבלת זריקה</th><th>חברה</th></tr>
+    <tr *ngFor="let vaccine of personalinformationService.client.vaccines; let i=index">
+        <div *ngIf="vaccine!=null">
+        <td>{{i}}</td>
+        <td>{{vaccine.injection_date}}</td>
+        <td >{{vaccine.vaccine_Company.company_name}}</td>
+    </div>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>תאריך קבלת תשובה חיובית</th>
+        <th>תאריך החלמה</th>
+    </tr>
+    <tr *ngFor="let illness of personalinformationService.client.illnessDates; let i=index">
+    <td>{{i}}</td>
+    <td>{{illness.positive_result_date}}</td>
+    <td>{{illness.recovery_date}}</td>
+  
+</tr></table>

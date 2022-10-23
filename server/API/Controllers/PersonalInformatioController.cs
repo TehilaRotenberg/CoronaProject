@@ -4,8 +4,8 @@ using BL;
 namespace API.Controllers
 {
 
-    [Produces("application/json")]
-    [Consumes("application/json")]
+   [Produces("application/json")]
+   [Consumes("application/json")]
     [Route("api/personalinformation")]
     [ApiController]
     public class PersonalInformatioController : Controller
@@ -23,6 +23,13 @@ namespace API.Controllers
         {
             return "aaa";
         }
+        [Route("update")]
+        [HttpPost]
+        public int Update([FromBody]string value)
+        {
+            return -1;
+        }
+
         
     }
 }

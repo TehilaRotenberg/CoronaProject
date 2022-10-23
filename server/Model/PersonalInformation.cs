@@ -31,7 +31,8 @@ namespace Models
             birthday = DateTime.Parse( personalInformation["birthday"].ToString());
             phone = long.Parse(personalInformation["phone"].ToString());
             mobile = long.Parse(personalInformation["mobile"].ToString());
-            
+            vaccines=corona_Vaccines;
+            this.illnessDates = illnessDates;
             
           // //חיסונים
           // vaccines = new Corona_vaccine[4];
