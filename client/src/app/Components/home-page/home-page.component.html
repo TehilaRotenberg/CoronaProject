@@ -1,5 +1,7 @@
+<button (click)="AddMember()">הוספת חבר</button>
 <table>
     <tr>
+        <th class="buttobRow"></th>
         <th>שם פרטי</th>
         <th>שם משפחה</th>
         <th>ת.ז</th>
@@ -11,7 +13,8 @@
     </tr>
     <!--(click)="DisplayingPersonalDetails(p)"-->
     <tr *ngFor="let p of prsonalInformations"   >
-      
+
+        <td (click)="DisplayingPersonalDetails(p)"></td>
         <td>{{p.first_name}}</td>
         <td>{{p.last_name}}</td>
         <td>{{p.id}}</td>
@@ -22,6 +25,6 @@
         <td>{{p.mobile}}</td>
     
         <th (click)="update(p)">עדכון</th>
-        <th>מחיקה</th>
+        <th (click)="delete(p)">מחיקה</th>
     </tr>
 </table>

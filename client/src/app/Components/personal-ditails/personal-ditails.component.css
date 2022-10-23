@@ -1,2 +1,4 @@
-table{direction: rtl; margin: auto;}
-td,th{border: 1px solid black;}
+
+table{direction: rtl; margin: auto;width: 80%;}
+th,td,select,input{border: solid 1px black;flex: 1;}
+body{direction: rtl;}

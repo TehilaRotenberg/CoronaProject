@@ -22,7 +22,16 @@ namespace DAL
 
         public override List<Vaccine_company> GetAll()
         {
-            throw new NotImplementedException();
+          if(documents.Count<=0)
+            {
+                return null;
+            }
+          list = new List<Vaccine_company>();
+            foreach(var doc in documents)
+            {
+                list.Add(new Vaccine_company(doc));
+            }
+            return list;
         }
         public Vaccine_company FindCompany(ObjectId objectId)
         {
@@ -30,6 +39,12 @@ namespace DAL
             if (bsondocument != null)
                 return new Vaccine_company(bsondocument);
             return null;
+        }
+
+        internal void Delete(Vaccine_company vaccine_Company)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("_id", vaccine_Company.company_id);
+            collection.FindOneAndDelete(filter);
         }
     }
 }

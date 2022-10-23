@@ -1,40 +1,54 @@
+
+
 <table >
     <tr>
         <td>שם פרטי</td>
-        <input [disabled]="true" [(ngModel)]="personalinformationService.client.first_name">
-    </tr>
-    <tr> <td>שם משפחה</td><input [disabled]="true" [(ngModel)]="personalinformationService.client.last_name"></tr>
-        
-<tr><td>תעודת זהות</td> <input [disabled]="true" [(ngModel)]="personalinformationService.client.id"></tr>
        
-   <tr><td>כתובת</td> <input [disabled]="true" [(ngModel)]="personalinformationService.client.address"></tr>     
-       <tr> <td>תאריך לידה</td><input [disabled]="true" type="date" [(ngModel)]="personalinformationService.client.birthday"></tr>
-      <tr>  <td>טלפון</td><input [disabled]="true"  [(ngModel)]="personalinformationService.client.phone"></tr>
-     <tr>  <td>טלפון נייד</td> <input [disabled]="true" [(ngModel)]="personalinformationService.client.mobile"></tr>
+        <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.first_name">
+    </tr>
+    <tr> <td>שם משפחה</td><input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.last_name"></tr>
+        
+<tr><td>תעודת זהות</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.id"></tr>
+       
+   <tr><td>כתובת</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.address"></tr>     
+       <tr> <td>תאריך לידה</td><input [disabled]="personalinformationService.status=='diplay'" type="date" [(ngModel)]="personalinformationService.client.birthday"></tr>
+      <tr>  <td>טלפון</td><input [disabled]="personalinformationService.status=='diplay'"  [(ngModel)]="personalinformationService.client.phone"></tr>
+     <tr>  <td>טלפון נייד</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.mobile"></tr>
    
     
 </table>
 <br>
+<br>
+
+
+<button (click)="addLine()" *ngIf="personalinformationService.status!='diplay'">+</button>
 <table>
-    <tr><th>תאריך קבלת זריקה</th><th>חברה</th></tr>
+
+    <tr><th></th>  <th>תאריך קבלת זריקה</th><th>חברה</th></tr>
     <tr *ngFor="let vaccine of personalinformationService.client.vaccines; let i=index">
-        <div *ngIf="vaccine!=null">
-        <td>{{i}}</td>
-        <td>{{vaccine.injection_date}}</td>
-        <td >{{vaccine.vaccine_Company.company_name}}</td>
-    </div>
+        
+       
+        <label (click)="deleteLine(vaccine)" *ngIf="personalinformationService.status!='diplay'">X</label>
+       <td> <input [disabled]="personalinformationService.status=='diplay'" type="date"  [(ngModel)]="vaccine.injection_date"></td>
+        <td><select [disabled]="personalinformationService.status=='diplay'" [value]="vaccine.vaccine_Company.company_name">
+        <option *ngFor="let company of vaccinCompanies">{{company.company_name}}</option>
+       </select></td>
+      
+       
     </tr>
 </table>
+<button (click)="addLineillness()"  *ngIf="personalinformationService.status!='diplay'" >+</button>
 <table>
-    <tr>
-        <th>
-        </th>
+    <tr class="classTr">
+        <th></th>
         <th>תאריך קבלת תשובה חיובית</th>
         <th>תאריך החלמה</th>
+
     </tr>
     <tr *ngFor="let illness of personalinformationService.client.illnessDates; let i=index">
-    <td>{{i}}</td>
-    <td>{{illness.positive_result_date}}</td>
-    <td>{{illness.recovery_date}}</td>
-  
-</tr></table>
+        <label *ngIf="personalinformationService.status!='diplay'" (click)="deleteLineillness(illness)">X</label>
+    <td><input [disabled]="personalinformationService.status=='diplay'"   type="date"[(ngModel)]="illness.positive_result_date"></td>
+    <td><input [disabled]="personalinformationService.status=='diplay'"  [(ngModel)]="illness.recovery_date" type="date"></td>
+    </tr>
+</table>
+<button *ngIf="personalinformationService.status!='diplay'" (click)="save()">שמור</button>

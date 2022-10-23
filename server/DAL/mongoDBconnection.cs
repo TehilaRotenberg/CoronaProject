@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -28,9 +29,10 @@ namespace DAL
         }
 
         //Create
-        public void Create(T obj)
+        public T Create(T obj)
         {
             collection.InsertOne(CreatBsonDocument(obj));
+            return obj;
         }
         
         //Read
@@ -48,6 +50,19 @@ namespace DAL
             BsonDocument bsonDocument = documents.Where(doc => doc["_id"] == objectId).FirstOrDefault();
             return bsonDocument;
         }
+
+        public override BsonDocument CreatBsonDocument(IllnessDate illness)
+      {
+            BsonDocument document = new BsonDocument
+            {
+                {"positive_result_date" ,illness.positive_result_date},
+                {"positive_result_date" ,illness.positive_result_date}
+            };
+            return document;
+            
+
+
+      }
 
     }
 

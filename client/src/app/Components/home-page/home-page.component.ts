@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Corona_vaccine } from 'src/app/models/Corona_vaccine';
+import { IllnessDate } from 'src/app/models/IllnessDate';
 
 import { PersonalInformation } from 'src/app/models/PersonalInformation';
+import { Vaccine_company } from 'src/app/models/Vaccine_company';
 import { PersonalInformationService } from 'src/app/Services/personal-information.service';
 
 @Component({
@@ -24,12 +27,30 @@ export class HomePageComponent implements OnInit {
   }
   DisplayingPersonalDetails(client:PersonalInformation)
   {
+    this.personalInfomationService.status="diplay"
     this.personalInfomationService.client=client
-this.router.navigate(['app-personal-ditails']);
+  this.router.navigate(['app-personal-ditails']);
   }
   update(client:PersonalInformation)
   {
-    this.personalInfomationService.updateClient(client).subscribe(a=>{console.log(a)})
-  }
+    this.personalInfomationService.client=client;
+    this.personalInfomationService.status="update";
+    this.router.navigate(['app-personal-ditails']);
 
+    
+ 
+  }
+  delete(p:PersonalInformation)
+  {
+  this.personalInfomationService.Delete(p).subscribe(p=>{})
+  }
+  AddMember()
+  {
+    this.personalInfomationService.client=new PersonalInformation();
+    this.personalInfomationService.client.vaccines.push(new Corona_vaccine())
+    this.personalInfomationService.client.illnessDates.push(new IllnessDate())
+    this.personalInfomationService.status="Add";
+    this.router.navigate(['app-personal-ditails']);
+  }
+  
 }

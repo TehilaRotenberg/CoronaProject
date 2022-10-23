@@ -15,7 +15,7 @@ namespace Models
         public string last_name { get; set; }
         public long id { get; set; }
         public string address { get; set; }
-        public string city { get; set; }
+       // public string city { get; set; }
         public DateTime birthday { get; set; }
         public long phone { get; set; }
         public long mobile { get; set; }

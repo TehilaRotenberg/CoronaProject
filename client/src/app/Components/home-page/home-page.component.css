@@ -1,2 +1,4 @@
 table{direction: rtl; margin: auto;width: 80%;}
 th,td{border: solid 1px black;flex: 1;}
+.classTr{width: 60%;display: flex;}
+.buttobRow{width: 20px; background-color: gray;}

@@ -4,11 +4,10 @@ using BL;
 namespace API.Controllers
 {
 
-   [Produces("application/json")]
-   [Consumes("application/json")]
+ 
     [Route("api/personalinformation")]
     [ApiController]
-    public class PersonalInformatioController : Controller
+    public class PersonalInformationController : Controller
     {
         BL_PersonalInformation BL_PersonalInformation=new BL_PersonalInformation();
         [Route("getall")]
@@ -25,10 +24,11 @@ namespace API.Controllers
         }
         [Route("update")]
         [HttpPost]
-        public int Update([FromBody]string value)
+        public int Update([FromBody]PersonalInformation personalInformation)
         {
             return -1;
         }
+      
 
         
     }
