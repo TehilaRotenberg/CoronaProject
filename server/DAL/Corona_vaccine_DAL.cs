@@ -51,6 +51,8 @@ namespace DAL
            collection.InsertOne(bsonDoc);
         }
 
+        
+
         public override List<Corona_vaccine> GetAll()
       {
             return null;
@@ -64,6 +66,11 @@ namespace DAL
                 bsonarry.Add(new MongoDBRef("corona_vaccion", vaccine._id).ToBson());
             }
             return bsonarry;
+        }
+
+        public override BsonDocument CreatBsonDocument(Corona_vaccine obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

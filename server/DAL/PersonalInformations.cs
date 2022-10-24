@@ -44,7 +44,7 @@ namespace DAL
             }
             foreach(var illness in personalInformation.illnessDates)
             {
-                BsonDocument bsonDoc = corona_Vaccine_DAL.CreatBsonDocument(illness);
+                BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
                 illnessDates_DAL.Add(bsonDoc);
             }
           
@@ -74,7 +74,7 @@ namespace DAL
             }
             foreach (var illness in personalInformation.illnessDates)
             {
-                BsonDocument bsonDoc = corona_Vaccine_DAL.CreatBsonDocument(illness);
+                BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
                 illnessDates_DAL.Add(bsonDoc);
             }
            
@@ -82,9 +82,9 @@ namespace DAL
             {
                 corona_Vaccine_DAL.Delete(document);
             }
-            foreach (BsonDocument document in doc["illnessDates"].AsBsonArray)
+            foreach (BsonDocument document in doc["corona_vaccion"].AsBsonArray)
             {
-                illnessDates_DAL.Delete(document);
+                corona_Vaccine_DAL.Delete(document);
             }
 
         }

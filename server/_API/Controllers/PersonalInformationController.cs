@@ -33,7 +33,7 @@ namespace API.Controllers
         }
         [Route("add")]
         [HttpPost]
-        public PersonalInformation Add([FromBody]PersonalInformation personalInformation)
+        public string Add([FromBody]PersonalInformation personalInformation)
         {
             return BL_PersonalInformation.Add(personalInformation);
         }
