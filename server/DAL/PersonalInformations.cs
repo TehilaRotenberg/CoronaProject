@@ -58,6 +58,7 @@ namespace DAL
                 i.Add(bsonDoc["_id"].ToString());
             }
             BsonDocument bsonDocuments = CreatBsonDocument(personalInformation,v,i);
+            database.GetCollection<BsonDocument>("personalInformation");
             collection.InsertOne(bsonDocuments);
             
 
