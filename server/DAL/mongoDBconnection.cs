@@ -29,10 +29,11 @@ namespace DAL
         }
 
         //Create
-        public T Create(T obj)
+        public BsonDocument Create(T obj)
         {
-            collection.InsertOne(CreatBsonDocument(obj));
-            return obj;
+            BsonDocument bsondocument = CreatBsonDocument(obj);
+                collection.InsertOne(bsondocument);
+            return bsondocument;
         }
         
         //Read

@@ -10,12 +10,19 @@ namespace Models
     public class Vaccine_company
     {
         public string company_name { get; set; }
-        public ObjectId company_id { get; set; }
+        public string company_id { get; set; }
+        //public ObjectId company_id { get; set; }
 
         public Vaccine_company(BsonDocument bsonDocument)
         {
-            company_id =new ObjectId(bsonDocument["_id"].ToString());
+           // company_id =new ObjectId(bsonDocument["_id"].ToString());
+            company_id =bsonDocument["_id"].ToString();
             company_name= bsonDocument["company"].ToString();
+        }
+
+        public Vaccine_company()
+        {
+
         }
     }
 }

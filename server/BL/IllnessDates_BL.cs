@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using DAL;
+using MongoDB.Bson;
+using MongoDB.Driver;
 namespace BL
 {
     public class IllnessDates_BL
@@ -31,9 +33,10 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        public IllnessDate Add(IllnessDate illness)
+        public BsonDocument Add(IllnessDate illness)
         {
           return illnessDate_DAL.Create(illness);
+
         }
     }
 }

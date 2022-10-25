@@ -33,9 +33,8 @@ namespace DAL
 
         public Corona_vaccine Delete(Corona_vaccine vacines)
         {
-            
             var filter = Builders<BsonDocument>.Filter.Eq("_id", vacines._id);
-            collection.FindOneAndDelete(filter);
+            var v=collection.FindOneAndDelete(filter);
             vaccine_Company_DAL.Delete(vacines.vaccine_Company);
             return vacines;
         }
@@ -58,19 +57,37 @@ namespace DAL
             return null;
       }
 
-        public BsonArray ConvertTOBasonArray(Corona_vaccine[] corona_Vaccines)
+        public BsonArray ConvertTOBasonArray(List<string> corona_Vaccines)
         {
             BsonArray bsonarry = new BsonArray();
-            foreach (Corona_vaccine vaccine in corona_Vaccines)
+            foreach (string vaccine in corona_Vaccines)
             {
-                bsonarry.Add(new MongoDBRef("corona_vaccion", vaccine._id).ToBson());
+                bsonarry.Add(new BsonDocument { { "$ref", "corona_vaccion" }, { "$id", vaccine } });
+                 
+               
             }
             return bsonarry;
         }
+       
 
-        public override BsonDocument CreatBsonDocument(Corona_vaccine obj)
+
+public override BsonDocument CreatBsonDocument(Corona_vaccine obj)
         {
-            throw new NotImplementedException();
+           // BsonDocument vaccinBsob = vaccine_Company_DAL.CreatBsonDocument(obj.vaccine_Company)
+           var filter=Builders<BsonDocument>.Filter.Eq("company", obj.vaccine_Company.company_name);
+            var v = database.GetCollection<BsonDocument>("vaccine_company").Find(filter).FirstOrDefault();
+            BsonDocument bsondoc = new BsonDocument {
+                { "injection_date", obj.injection_date },
+
+                { "vaccine_Company",new BsonDocument{ {  "$ref", "vaccine_Company" }, { "$id", v["_id"] } }
+
+
+            }};
+            return bsondoc;
+
         }
+            
+
+        
     }
 }

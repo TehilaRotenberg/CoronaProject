@@ -24,31 +24,46 @@ namespace DAL
 
         public PersonalInformation Delete(PersonalInformation personalInformation)
         {
-           var filter = Builders<BsonDocument>.Filter.Eq("id",personalInformation.id);
-            collection.FindOneAndDelete(filter);
+            collection = database.GetCollection<BsonDocument>("personalInformation");
+           
+            var filter = Builders<BsonDocument>.Filter.Eq("id", personalInformation.id);
+            //var docs = collection.Find(new BsonDocument()).ToList();
+
+            var p=collection.FindOneAndDelete(filter);
+            // var p=collection.FindOneAndDelete(filter);
+
+
+            // collection.DeleteOne(p);
             foreach (var vacine in personalInformation.vaccines) { corona_Vaccine_DAL.Delete(vacine); }
-            foreach (var illness in personalInformation.illnessDates) { illnessDates_DAL.Delete(illness); }
-            collection.FindOneAndDelete(filter);
+           foreach (var illness in personalInformation.illnessDates) { illnessDates_DAL.Delete(illness); }
+            
             return personalInformation;
 
         }
 
         public void Add(PersonalInformation personalInformation)
         {
-            BsonDocument bsonDocuments = CreatBsonDocument(personalInformation);
-            collection.InsertOne(bsonDocuments);
+            List<string> v = new List<string>();
+            List<string> i = new List<string>();
             foreach(var vaccine in personalInformation.vaccines)
             {
                 BsonDocument bsonDoc= corona_Vaccine_DAL.CreatBsonDocument(vaccine);
                 corona_Vaccine_DAL.Add(bsonDoc);
+                v.Add(bsonDoc["_id"].ToString());
             }
             foreach(var illness in personalInformation.illnessDates)
             {
                 BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
                 illnessDates_DAL.Add(bsonDoc);
+                i.Add(bsonDoc["_id"].ToString());
             }
-          
+            BsonDocument bsonDocuments = CreatBsonDocument(personalInformation,v,i);
+            collection.InsertOne(bsonDocuments);
+            
+
         }
+
+       
 
         ///public void UpdateUserRef(MongoDBRef mongoDBRef,ObjectId objectId)
         ///{
@@ -64,32 +79,31 @@ namespace DAL
         //}    ///
 
         public  void Update(PersonalInformation personalInformation)
-        {
-            BsonDocument bsonDocuments = CreatBsonDocument(personalInformation);
-            var doc=documents.Where(d => d["id"] == personalInformation.id).FirstOrDefault();
-            foreach (var vaccine in personalInformation.vaccines)
-            {
-                BsonDocument bsonDoc = corona_Vaccine_DAL.CreatBsonDocument(vaccine);
-                corona_Vaccine_DAL.Add(bsonDoc);
-            }
-            foreach (var illness in personalInformation.illnessDates)
-            {
-                BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
-                illnessDates_DAL.Add(bsonDoc);
-            }
-           
-            foreach(BsonDocument document in doc["corona_vaccion"].AsBsonArray)
-            {
-                corona_Vaccine_DAL.Delete(document);
-            }
-            foreach (BsonDocument document in doc["corona_vaccion"].AsBsonArray)
-            {
-                corona_Vaccine_DAL.Delete(document);
-            }
+      {
+          BsonDocument bsonDocuments = CreatBsonDocument(personalInformation);
+          var doc=documents.Where(d => d["id"] == personalInformation.id).FirstOrDefault();
+          foreach (var vaccine in personalInformation.vaccines)
+          {
+              BsonDocument bsonDoc = corona_Vaccine_DAL.CreatBsonDocument(vaccine);
+              corona_Vaccine_DAL.Add(bsonDoc);
+          }
+          foreach (var illness in personalInformation.illnessDates)
+          {
+              BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
+              illnessDates_DAL.Add(bsonDoc);
+          }
 
-        }
-        
-       
+          foreach(BsonDocument document in doc["corona_vaccion"].AsBsonArray)
+          {
+              corona_Vaccine_DAL.Delete(document);
+          }
+          foreach (BsonDocument document in doc["corona_vaccion"].AsBsonArray)
+          {
+              corona_Vaccine_DAL.Delete(document);
+          }
+
+      }
+
         public override BsonDocument CreatBsonDocument(PersonalInformation obj)
         {
             BsonDocument bsaondocument = new BsonDocument
@@ -99,8 +113,20 @@ namespace DAL
                 {"id",obj.id },
                 {"address",obj.address },
                 {"phone",obj.phone },
+                {"mobile",obj.mobile } };
+            return bsaondocument;
+        }
+        public  BsonDocument CreatBsonDocument(PersonalInformation obj,List<string>v,List<string>i)
+        {
+            BsonDocument bsaondocument = new BsonDocument
+            {
+                {"first_name",obj.first_name },
+                {"last_name",obj.last_name },
+                {"id",obj.id },
+                {"address",obj.address },
+                {"phone",obj.phone },
                 {"mobile",obj.mobile },
-                {"corona_vaccion",new BsonArray{ corona_Vaccine_DAL.ConvertTOBasonArray(obj.vaccines) } },
+                {"corona_vaccion",new BsonArray{ corona_Vaccine_DAL.ConvertTOBasonArray(v) } },
                 {"illnessDates",new BsonArray{ illnessDates_DAL.ConvertTOBasonArray (obj.illnessDates)} }
             };
             return bsaondocument;

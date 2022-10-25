@@ -29,7 +29,8 @@ namespace API.Controllers
        
         public PersonalInformation Delete([FromBody]PersonalInformation personalInformation)
         {
-            return BL_PersonalInformation.Delete(personalInformation);
+            //return personalInformation;
+           return BL_PersonalInformation.Delete(personalInformation);
         }
         [Route("add")]
         [HttpPost]

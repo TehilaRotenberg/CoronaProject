@@ -58,7 +58,7 @@ namespace BL
         //טלפון
         public static bool IsTelephone(string tel)
         {
-            string pattern = @"\b0[ 2 4 7 8 3 77]-[2-9]\d{6}$";
+            string pattern = @"\b0[ 2 4 7 8 3 77][2-9]\d{6}$";
             Regex reg = new Regex(pattern);
             return reg.IsMatch(tel);
         }
@@ -66,7 +66,7 @@ namespace BL
         //פלאפון
         public static bool IsCellPhone(string tel)
         {
-            string pattern = @"\b05[0 2 4 6 7 8 3 5]-[2-9]\d{6}$";
+            string pattern = @"\b05[0 2 4 6 7 8 3 5][2-9]\d{6}$";
             Regex reg = new Regex(pattern);
             return reg.IsMatch(tel);
         }

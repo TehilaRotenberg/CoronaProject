@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PersonalInformation } from '../models/PersonalInformation';
 import { Observable } from 'rxjs/internal/Observable';
 import { Vaccine_company } from '../models/Vaccine_company';
+import { Personal } from '../models/Personal';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,9 +24,12 @@ export class PersonalInformationService {
  
     return this.http.post<string>(`${this.url}/update`,this.client);
   }
-  Delete(personal:PersonalInformation):Observable<string>
+  Delete(personal:PersonalInformation):Observable<PersonalInformation>
   {
-    return this.http.post<string>(`${this.url}/delete`,personal)
+    console.log(personal);
+    let p=new Personal()
+   
+    return this.http.post<PersonalInformation>(`${this.url}/delete`,personal)
   }
   Add():Observable<string>
   {

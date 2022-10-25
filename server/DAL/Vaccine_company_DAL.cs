@@ -17,7 +17,7 @@ namespace DAL
 
         public override BsonDocument CreatBsonDocument(Vaccine_company obj)
         {
-            throw new NotImplementedException();
+            return new BsonDocument { { "company", obj.company_name }};
         }
 
         public override List<Vaccine_company> GetAll()

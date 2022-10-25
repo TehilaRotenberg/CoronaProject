@@ -22,6 +22,10 @@ namespace Models
         public Corona_vaccine[] vaccines { get; set; }
         public List<IllnessDate> illnessDates { get; set; }
 
+        public PersonalInformation()
+        {
+
+        }
         public PersonalInformation(BsonDocument personalInformation, Corona_vaccine[] corona_Vaccines,List<IllnessDate> illnessDates)
         {
             first_name = personalInformation["first_name"].ToString();

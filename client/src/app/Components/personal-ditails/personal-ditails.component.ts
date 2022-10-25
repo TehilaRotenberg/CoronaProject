@@ -83,4 +83,13 @@ else
   })
 }
 
-}}
+}
+selected(i:number,company:any)
+{
+  console.log(i)
+  console.log(company.value)
+this.personalinformationService.client.vaccines[i].vaccine_Company.company_name=company.value;
+console.log(this.personalinformationService.client)
+}
+
+}

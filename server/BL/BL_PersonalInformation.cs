@@ -10,8 +10,11 @@ namespace BL
 {
     public class BL_PersonalInformation
     {
-        PersonalInformations personalInformations;
-
+        public PersonalInformations personalInformations;
+        public BL_PersonalInformation()
+        {
+            personalInformations = new PersonalInformations("personalInformations");
+        }
         public List<PersonalInformation> GetAll()
         {
              personalInformations = new PersonalInformations("personalInformation");
@@ -73,12 +76,12 @@ namespace BL
                 throw new Exception("הכתובת אינה תקינה");
 
             }
-            if(!Legal.IsTelephone(personalInformation.phone.ToString()))
+            if(!Legal.IsTelephone("0"+personalInformation.phone.ToString()))
             {
                 throw new Exception("הטלפון אינו תקין");
             }
 
-            if(!Legal.IsCellPhone(personalInformation.mobile.ToString()))
+            if(!Legal.IsCellPhone("0"+personalInformation.mobile.ToString()))
                {
                 throw new Exception("הטלפון הנייד אינו תקין");
                }

@@ -30,8 +30,8 @@
        
         <label (click)="deleteLine(vaccine)" *ngIf="personalinformationService.status!='diplay'">X</label>
        <td> <input [disabled]="personalinformationService.status=='diplay'" type="date"  [(ngModel)]="vaccine.injection_date"></td>
-        <td><select [disabled]="personalinformationService.status=='diplay'" [value]="vaccine.vaccine_Company.company_name">
-        <option *ngFor="let company of vaccinCompanies">{{company.company_name}}</option>
+        <td><select [disabled]="personalinformationService.status=='diplay'"  (change)="selected(i,$event.target)">
+        <option *ngFor="let company of vaccinCompanies" >{{company.company_name}}</option>
        </select></td>
       
        
