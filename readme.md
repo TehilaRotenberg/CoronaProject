@@ -2,7 +2,7 @@
 <p>תלויות חיצוניות:<p>
 <picture>
   
-    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/homepage.png?raw=true">
+    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
 
 <picture>
 
