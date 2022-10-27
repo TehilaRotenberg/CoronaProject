@@ -13,7 +13,7 @@ namespace BL
         public PersonalInformations personalInformations;
         public BL_PersonalInformation()
         {
-            personalInformations = new PersonalInformations("personalInformations");
+            personalInformations = new PersonalInformations("personalInformation");
         }
         public List<PersonalInformation> GetAll()
         {
@@ -44,9 +44,10 @@ namespace BL
         public string Add(PersonalInformation personalInformation)
         {
             try {
+                containId(personalInformation.id);
                 cheackLegal(personalInformation);
                 personalInformations.Add(personalInformation);
-                return "success";
+                return "השמירה בוצעה בהצלחה";
             }
             catch(Exception ex)
             {
@@ -54,8 +55,18 @@ namespace BL
             }
           
         }
+        public void containId(long id)
+        {
+            if (personalInformations.find(id) != null)
+            {
+                throw new Exception("תעודת הזהות קיימת במערכת");
+            }
+        }
         public void cheackLegal(PersonalInformation personalInformation)
         {
+          
+
+
             if(!Legal.LegalId(personalInformation.id.ToString()))
             {
                 throw new Exception("תעודת זהות אינה תקינה");
@@ -90,6 +101,7 @@ namespace BL
             {
                 throw new Exception("תאריך לא תקין");
             }
+
         }
 
       

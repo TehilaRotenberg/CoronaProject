@@ -13,14 +13,16 @@ import { VaccineCompanyService } from 'src/app/Services/vaccine-company.service'
 })
 export class PersonalDitailsComponent implements OnInit {
 vaccinCompanies:Vaccine_company[]=[]
+date:Date=new Date()
   constructor(public personalinformationService:PersonalInformationService, private vaccinCompanyServer:VaccineCompanyService) { 
     console.log(personalinformationService.client.vaccines)
+    console.log(this.personalinformationService.status)
    
   }
 
   ngOnInit(): void {
     var coronavaccin:Corona_vaccine[]=[]
-   
+    this.date=new Date(this.personalinformationService.client.birthday)
     this.getVaccinCompany()
     console.log(this.vaccinCompanies)
      this.personalinformationService.client.vaccines.forEach(element => {
@@ -58,28 +60,15 @@ save()
 {
 if(this.personalinformationService.status=="Add")
 {
-  this.personalinformationService.Add().subscribe(client=>{
-    if(client==null)
-    {
-      alert("השמירה נכשלה")
-    }
-    else
-    {
-      alert("השמירה בוצעה בהצלחה")
-    }
+  console.log(this.personalinformationService.status)
+  this.personalinformationService.Add().subscribe(message=>{
+    alert(message);
   })
 }
 else
 {
-  this.personalinformationService.updateClient().subscribe(client=>{
-    if(client==null)
-    {
-      alert("השמירה נכשלה")
-    }
-    else
-    {
-      alert("השמירה בוצעה בהצלחה")
-    }
+  this.personalinformationService.updateClient().subscribe(message=>{
+   alert(message);
   })
 }
 
@@ -92,4 +81,8 @@ this.personalinformationService.client.vaccines[i].vaccine_Company.company_name=
 console.log(this.personalinformationService.client)
 }
 
+}
+
+function getDate(birthday: Date): any {
+  throw new Error('Function not implemented.');
 }

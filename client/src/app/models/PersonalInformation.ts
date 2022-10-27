@@ -10,7 +10,7 @@ export class PersonalInformation{
     id!: number;
     address!: string;
     //city!: string;
-    birthday!: Date;
+    birthday: Date=new Date();
     phone!: number;
     mobile!: number;
     vaccines: Corona_vaccine[]=[];

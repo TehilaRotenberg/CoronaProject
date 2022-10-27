@@ -4,8 +4,8 @@ using BL;
 namespace API.Controllers
 {
 
-  //[Produces("application/json")]
-  //[Consumes("application/json")]
+    [Produces("application/json")]
+    [Consumes("application/json")]
     [Route("api/personalinformation")]
     [ApiController]
     public class PersonalInformationController : Controller

@@ -20,9 +20,9 @@
         <td>{{p.id}}</td>
         <td>{{p.address}}</td>
         <!--<td>{{p.city}}</td>-->
-        <td>{{p.birthday}}</td>
-        <td>{{p.phone}}</td>
-        <td>{{p.mobile}}</td>
+        <td >{{p.birthday | date: 'dd/MM/yyyy'}}</td>
+        <td>0{{p.phone}}</td>
+        <td>0{{p.mobile}}</td>
     
         <th (click)="update(p)">עדכון</th>
         <th (click)="delete(p)">מחיקה</th>

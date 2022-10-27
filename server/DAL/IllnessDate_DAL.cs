@@ -14,23 +14,8 @@ namespace DAL
         PersonalInformations personalInformations;
         public IllnessDate_DAL(string collection_name) : base(collection_name)
         {
-            //personalInformations = new PersonalInformations("personalInformation");
 
-        }
-       // public  BsonDocument CreatBsonDocument(IllnessDate obj)
-       // {
-       //     BsonDocument BsonDocument = new BsonDocument {
-       //         {"positive_result_date",obj.positive_result_date },
-       //         {"recovery_date",obj.recovery_date }
-       //     };
-       //     return BsonDocument;
-       // }
 
-       
-
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
         }
         
         public  IllnessDate FindIllnessDate(ObjectId objectId)
@@ -46,30 +31,41 @@ namespace DAL
         {
             BsonDocument document = new BsonDocument
             {
-                {"positive_result_date" ,illness.positive_result_date},
-                {"positive_result_date" ,illness.positive_result_date}
+                {"positive_result_date" ,illness.positive_result_date.ToString()},
+                {"recovery_date" ,illness.recovery_date.ToString()}
             };
             return document;
         }
 
-            public void Delete(IllnessDate illness)
+        //Delete 
+        //input:object of type IllnessDate
+        //The function find document by id and detele it;
+        public void Delete(IllnessDate illness)
         {
             var filter = Builders<BsonDocument>.Filter.Eq("_id", illness._id);
-            collection.FindOneAndDelete(filter);
+            var c=collection.FindOneAndDelete(filter);
            
 
         }
-        public void Delete(BsonDocument bsonDocument)
+        //Delete
+        //input:bsondocument that belongs to IllnessDate cillection
+        ////The function find document by id and detele it;
+        public void Delete(BsonArray bsonDocument)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", bsonDocument["%id"]);
-            collection.FindOneAndDelete(filter);
+            collection = database.GetCollection<BsonDocument>("illnessDates");
+    
+      
+           var d = collection.FindOneAndDelete(documents.Where(doc => doc["_id"].ToString() == bsonDocument[0]["$id"].ToString()).FirstOrDefault());
         }
-
-        internal void Add(BsonDocument bsonDocuments)
+        //Add
+        //input:bsondocument that belongs to IllnessDate cillection
+        //The function Add the bsonDocument to the illness collction
+        public void Add(BsonDocument bsonDocuments)
         {
             collection.InsertOne(bsonDocuments);
         }
-
+        //GetAll
+        //output:list of type IllnessDate with all IllnessDates in the database
         public override List<IllnessDate> GetAll()
         {
             list = new List<IllnessDate>();
@@ -81,13 +77,13 @@ namespace DAL
             }
             return list;
         }
-
-        public BsonValue ConvertTOBasonArray(List<IllnessDate> illnessDates)
+        
+        public BsonValue ConvertTOBasonArray(List<string> illnessDates)
         {
             BsonArray bsonarry = new BsonArray();
-            foreach (IllnessDate illnessDate in illnessDates)
+            foreach (string illnessDate in illnessDates)
             {
-                bsonarry.Add(new MongoDBRef("illnessDates", illnessDate._id).ToBson());
+                bsonarry.Add(new BsonDocument { { "$ref", "corona_vaccion" }, { "$id", illnessDate } });
             }
             return bsonarry;
         }

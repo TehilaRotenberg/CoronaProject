@@ -43,65 +43,57 @@ namespace DAL
 
         public void Add(PersonalInformation personalInformation)
         {
-            List<string> v = new List<string>();
-            List<string> i = new List<string>();
-            foreach(var vaccine in personalInformation.vaccines)
-            {
-                BsonDocument bsonDoc= corona_Vaccine_DAL.CreatBsonDocument(vaccine);
-                corona_Vaccine_DAL.Add(bsonDoc);
-                v.Add(bsonDoc["_id"].ToString());
-            }
-            foreach(var illness in personalInformation.illnessDates)
-            {
-                BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
-                illnessDates_DAL.Add(bsonDoc);
-                i.Add(bsonDoc["_id"].ToString());
-            }
+            List<string> v, i;
+            (v,i)=GetRef(personalInformation);
+            
+           
             BsonDocument bsonDocuments = CreatBsonDocument(personalInformation,v,i);
-            database.GetCollection<BsonDocument>("personalInformation");
+            
             collection.InsertOne(bsonDocuments);
             
 
         }
-
-       
-
-        ///public void UpdateUserRef(MongoDBRef mongoDBRef,ObjectId objectId)
-        ///{
-        ///    BsonDocument doc = (BsonDocument)collection.Find(documents.Where(document => document["illnessDates"].AsBsonArray.Contains(new MongoDBRef("illnessDates", objectId).ToBsonDocument())).FirstOrDefault());
-        ///    var copyDoc = doc;
-        ///    foreach (var bd in doc["illnessDates"].AsBsonArray)
-        ///    {
-        ///        if(bd["$id"].Equals(objectId))
-        ///        {
-        ///            doc = mongoDBRef.ToBsonDocument();
-        ///        }
-        ///    }  
-        //}    ///
-
+        public (List<string>,List<string>) GetRef(PersonalInformation personalInformation)
+        {
+            List<string> key_vaccins = new List<string>();
+            List<string> key_illness = new List<string>();
+            
+            
+            foreach (var vaccine in personalInformation.vaccines)
+            {
+                BsonDocument bsonDoc = corona_Vaccine_DAL.CreatBsonDocument(vaccine);
+                corona_Vaccine_DAL.Add(bsonDoc);
+                key_vaccins.Add(bsonDoc["_id"].ToString());
+            }
+            foreach (var illness in personalInformation.illnessDates)
+            {
+                BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
+                illnessDates_DAL.Add(bsonDoc);
+                key_illness.Add(bsonDoc["_id"].ToString());
+            }
+            return (key_vaccins, key_illness);
+        }
         public  void Update(PersonalInformation personalInformation)
       {
-          BsonDocument bsonDocuments = CreatBsonDocument(personalInformation);
-          var doc=documents.Where(d => d["id"] == personalInformation.id).FirstOrDefault();
-          foreach (var vaccine in personalInformation.vaccines)
-          {
-              BsonDocument bsonDoc = corona_Vaccine_DAL.CreatBsonDocument(vaccine);
-              corona_Vaccine_DAL.Add(bsonDoc);
-          }
-          foreach (var illness in personalInformation.illnessDates)
-          {
-              BsonDocument bsonDoc = illnessDates_DAL.CreatBsonDocument(illness);
-              illnessDates_DAL.Add(bsonDoc);
-          }
-
-          foreach(BsonDocument document in doc["corona_vaccion"].AsBsonArray)
-          {
-              corona_Vaccine_DAL.Delete(document);
-          }
-          foreach (BsonDocument document in doc["corona_vaccion"].AsBsonArray)
-          {
-              corona_Vaccine_DAL.Delete(document);
-          }
+            List<string> v, i;
+            (v,i)=GetRef(personalInformation);
+            var doc = documents.Where(d => d["id"] == personalInformation.id).FirstOrDefault();
+            if (doc.Contains("corona_vaccion"))
+            {
+                foreach (var document in doc["corona_vaccion"].AsBsonArray)
+                {
+                    corona_Vaccine_DAL.Delete(document.AsBsonArray);
+                }
+            }
+            if(doc.Contains("illnessDates"))
+            {
+                foreach (var document in doc["illnessDates"].AsBsonArray)
+                {
+                    illnessDates_DAL.Delete(document.AsBsonArray);
+                }
+            }
+            collection.FindOneAndUpdate(doc, CreatBsonDocument(personalInformation, v, i));
+         
 
       }
 
@@ -127,9 +119,19 @@ namespace DAL
                 {"address",obj.address },
                 {"phone",obj.phone },
                 {"mobile",obj.mobile },
-                {"corona_vaccion",new BsonArray{ corona_Vaccine_DAL.ConvertTOBasonArray(v) } },
-                {"illnessDates",new BsonArray{ illnessDates_DAL.ConvertTOBasonArray (obj.illnessDates)} }
+               
+              
+                {"birthday",obj.birthday.ToString() }
             };
+            if (v.Count() > 0)
+            {
+                bsaondocument.Add("corona_vaccion", new BsonArray { corona_Vaccine_DAL.ConvertTOBasonArray(v) });
+            }
+            if (i.Count() > 0)
+            {
+                bsaondocument.Add("illnessDates", new BsonArray { illnessDates_DAL.ConvertTOBasonArray(i) });
+            }
+
             return bsaondocument;
         }
 
@@ -145,25 +147,36 @@ namespace DAL
                 int i = 0;
                 List<IllnessDate> illensDates = new List<IllnessDate>();
             
-            {   foreach (BsonDocument vaccions in document["corona_vaccion"].AsBsonArray)
-                {
+            {
+                    if (document.Contains("corona_vaccion")){
+                        foreach (var vaccions in document["corona_vaccion"].AsBsonArray)
+                        {
 
-                    MongoDBRef dbRef = new MongoDBRef(vaccions["$ref"].ToString(), new ObjectId(vaccions["$id"].ToString()));
-                    Corona_vaccine corona_Vaccine = corona_Vaccine_DAL.FindCoronaVccine(((ObjectId)dbRef.Id));
-                    corona_Vaccines[i] = corona_Vaccine;
-                    i++;
-                }
-                    foreach (BsonDocument illnessDate in document["illnessDates"].AsBsonArray)
+
+                            MongoDBRef dbRef = new MongoDBRef(vaccions[0]["$ref"].ToString(), new ObjectId(vaccions[0]["$id"].ToString()));
+                            Corona_vaccine corona_Vaccine = corona_Vaccine_DAL.FindCoronaVccine(((ObjectId)dbRef.Id));
+                            corona_Vaccines[i] = corona_Vaccine;
+                            i++;
+                        }
+                    }
+                    if (document.Contains("illnessDates"))
                     {
+                        foreach (var illnessDate in document["illnessDates"].AsBsonArray)
+                        {
 
-                        MongoDBRef dbRef = new MongoDBRef(illnessDate["$ref"].ToString(), new ObjectId(illnessDate["$id"].ToString()));
-                        IllnessDate illensDate =illnessDates_DAL.FindIllnessDate (((ObjectId)dbRef.Id));
-                        illensDates.Add(illensDate);
+                            MongoDBRef dbRef = new MongoDBRef(illnessDate[0]["$ref"].ToString(), new ObjectId(illnessDate[0]["$id"].ToString()));
+                            IllnessDate illensDate = illnessDates_DAL.FindIllnessDate(((ObjectId)dbRef.Id));
+                            illensDates.Add(illensDate);
+                        }
                     }
                       list.Add(new PersonalInformation(document,corona_Vaccines, illensDates));
                 }
             }
             return list;
+        }
+        public BsonDocument find(long id)
+        {
+            return documents.Find(d => d["id"] == id);
         }
     }
 }

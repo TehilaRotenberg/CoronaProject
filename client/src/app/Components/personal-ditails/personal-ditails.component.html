@@ -10,8 +10,12 @@
         
 <tr><td>תעודת זהות</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.id"></tr>
        
-   <tr><td>כתובת</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.address"></tr>     
-       <tr> <td>תאריך לידה</td><input [disabled]="personalinformationService.status=='diplay'" type="date" [(ngModel)]="personalinformationService.client.birthday"></tr>
+   <tr><td>כתובת</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.address"></tr> 
+   <!-- [(ngModel)]="personalinformationService.client.birthday"-->    
+
+       <tr> <td>תאריך לידה</td>
+       <input [disabled]="personalinformationService.status=='diplay'" [ngModel]="personalinformationService.client.birthday | date:'yyyy-MM-dd'" (ngModelChange)="personalinformationService.client.birthday = $event" type="date" />
+</tr>
       <tr>  <td>טלפון</td><input [disabled]="personalinformationService.status=='diplay'"  [(ngModel)]="personalinformationService.client.phone"></tr>
      <tr>  <td>טלפון נייד</td> <input [disabled]="personalinformationService.status=='diplay'" [(ngModel)]="personalinformationService.client.mobile"></tr>
    
@@ -29,7 +33,7 @@
         
        
         <label (click)="deleteLine(vaccine)" *ngIf="personalinformationService.status!='diplay'">X</label>
-       <td> <input [disabled]="personalinformationService.status=='diplay'" type="date"  [(ngModel)]="vaccine.injection_date"></td>
+       <td> <input [disabled]="personalinformationService.status=='diplay'" type="date"  (ngModelChange)="vaccine.injection_date =$event" [ngModel]="vaccine.injection_date | date: 'dd/MM/yyyy'" ></td>
         <td><select [disabled]="personalinformationService.status=='diplay'"  (change)="selected(i,$event.target)">
         <option *ngFor="let company of vaccinCompanies" >{{company.company_name}}</option>
        </select></td>
@@ -47,8 +51,8 @@
     </tr>
     <tr *ngFor="let illness of personalinformationService.client.illnessDates; let i=index">
         <label *ngIf="personalinformationService.status!='diplay'" (click)="deleteLineillness(illness)">X</label>
-    <td><input [disabled]="personalinformationService.status=='diplay'"   type="date"[(ngModel)]="illness.positive_result_date"></td>
-    <td><input [disabled]="personalinformationService.status=='diplay'"  [(ngModel)]="illness.recovery_date" type="date"></td>
+    <td><input [disabled]="personalinformationService.status=='diplay'"   type="date" [ngModel]="illness.positive_result_date | date:'yyyy-MM-dd'" (ngModelChange)="illness.positive_result_date=$event"></td>
+    <td><input [disabled]="personalinformationService.status=='diplay'"  [ngModel]="illness.recovery_date | date:'yyyy-MM-dd'" (ngModelChange)="illness.recovery_date=$event" type="date"></td>
     </tr>
 </table>
 <button *ngIf="personalinformationService.status!='diplay'" (click)="save()">שמור</button>
