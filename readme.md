@@ -27,6 +27,10 @@
     כמו כן אפשר להוסיף תקופת מחלה בקורונה ע"י כפתור ה+
    מעל טבלת זמני המחלה
    <li>
+   <picture >
+  <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/2.png">
+   <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/2.png">
+     </picture >
 בלחיצה על כפתור שמור
  <br>
  תתבצע בדיקת תקינות על הקלטים והם ישמרו
