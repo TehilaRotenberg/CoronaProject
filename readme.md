@@ -18,8 +18,8 @@
   <li>יפתח טופס עם שדות להשלמת פרטים
   <br>
   <picture >
-  <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/personalInformation.png">
-   <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/personalInformation.png">
+  <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/personakInformationAdd.png">
+   <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/personakInformationAdd.png">
      </picture >
     <br>
     ישנה אפשרות להוסיף חיסון בכפתו ה+ מעל טבלת הזריקות
