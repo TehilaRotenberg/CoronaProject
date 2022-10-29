@@ -3,7 +3,7 @@
 <li>בעת ההרצה מוצגים פרטי חברי הקופה</li>
   <li>בלחיצה על כפתור הוספה 
   <li>תפתח חלונית עם שדות להשלמת פרטים</li>
-   <li><picture>
+   <lo><picture>
   <source media="https://github.com"/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
     <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
 
