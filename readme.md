@@ -4,15 +4,17 @@
   <picture>
   <source media="https://github.com"/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
     <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
-
 </picture>
-  <li>על מנת להציג פרטים איישים על חבר ישל לבחור בשורה המתאימה בקוביה הימנית 
-   <picture>
-  <source media="https://github.com"/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
-    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/homepage.png">
+  <li>על מנת להציג פרטים איישים על חבר יש לבחור בשורה המתאימה בקוביה הימנית 
+  <picture>
+  <source media="https://github.com/TehilaRotenberg/CoronaProject/blob/master/display.png">
+    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/display.png">
 
-</picture>
-  <li>בלחיצה על כפתור הוספת חבר 
+
+  <li>בלחיצה על כפתור הוספת חבר
+  <picture>
+  <source media="https://github.com/TehilaRotenberg/CoronaProject/blob/master/display.png">
+    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/display.png">
   <li>יפתח טופס עם שדות להשלמת פרטים
   <br>
   <picture >
