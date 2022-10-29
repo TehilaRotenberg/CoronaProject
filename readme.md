@@ -13,8 +13,8 @@
 
   <li>בלחיצה על כפתור הוספת חבר
   <picture>
-  <source media="https://github.com/TehilaRotenberg/CoronaProject/blob/master/display.png">
-    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/display.png">
+  <source media="https://github.com/TehilaRotenberg/CoronaProject/blob/master/add.png">
+    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/add.png">
   <li>יפתח טופס עם שדות להשלמת פרטים
   <br>
   <picture >
