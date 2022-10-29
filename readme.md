@@ -26,7 +26,7 @@
     <br>
     כמו כן אפשר להוסיף תקופת מחלה בקורונה ע"י כפתור ה+
    מעל טבלת זמני המחלה
-   <li>
+
    <picture >
   <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/2.png">
    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/2.png">
@@ -37,18 +37,16 @@
 
  
                                                                                          
-   <li>
+ 
    על מנת לעדכן פרטים אישיים,מועדי מחלה וחיסונים יש ללחוץ על הכפתור עדכן בשורה המתאימה לחבר בקופה
    <li>מיד יפתח טופס עפ שדות לעדכון הפרטים
      <picture >
   <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/update.png">
    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/update.png">
      </picture >
-     
-    
-     על מנת למחוק חבר יש ללחוץ על הכפתו מחיקה בשורה המתאימה <li>
-      
-      
+   <br>
+     <li>
+          <li>על מנת למחוק חבר יש ללחוץ על כפתור מחיקה בשורה המתאימה
   <picture >
   <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/delete.png">
    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/delete.png">
