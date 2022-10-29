@@ -10,12 +10,18 @@
   <li>יפתח טופס עם שדות להשלמת פרטים
   <br>
   <picture >
-  <source media= https://github.com/TehilaRotenberg/CoronaProject/commit/89bb1d89b62cb44053a8bef5fac487078b28a3ce>
-   <img  src="https://github.com/TehilaRotenberg/CoronaProject/commit/89bb1d89b62cb44053a8bef5fac487078b28a3ce>
+  <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/personalInformation.png">
+   <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/personalInformation.png">
      </picture >
+    <br>
+    ישנה אפשרות להוסיף חיסון בכפתו ה+ מעל טבלת הזריקות
+    <br>
+    כמו כן אפשר להוסיף תקופת מחלה בקורונה ע"י כפתור ה+
+   מעל טבלת זמני המחלה
+   <li>
 בלחיצה על כפתור שמור
  <br>
- תתבצע בדיקת תקינות על הקלטים והם ישמר
+ תתבצע בדיקת תקינות על הקלטים והם ישמרו
  <br>
  
                                                                                          
