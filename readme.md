@@ -34,7 +34,7 @@
 בלחיצה על כפתור שמור
  <br>
  תתבצע בדיקת תקינות על הקלטים והם ישמרו
- <br>
+
  
                                                                                          
    <li>
@@ -45,8 +45,11 @@
    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/update.png">
      </picture >
      
-     <li>על מנת למחוק חבר יש ללחוץ על הכפתו מחיקה בשורה המתאימה
-       <picture >
+    
+     על מנת למחוק חבר יש ללחוץ על הכפתו מחיקה בשורה המתאימה <li>
+      
+      
+  <picture >
   <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/delete.png">
    <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/delete.png">
      </picture >
