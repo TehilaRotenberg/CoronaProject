@@ -38,6 +38,10 @@
  
                                                                                          
    <il><li>
+     <picture >
+  <source media= "https://github.com/TehilaRotenberg/CoronaProject/blob/master/update.png">
+   <img  src="https://github.com/TehilaRotenberg/CoronaProject/blob/master/update.png">
+     </picture >
   </li>
 <p>תלויות חיצוניות:<p>
 
